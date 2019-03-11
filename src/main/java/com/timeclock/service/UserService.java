@@ -10,10 +10,10 @@ public interface UserService {
 	
 	public List<User> getAllUsers();
 	
-	public User editUser(User user);
+	public void editUser(User user);
 	
-	public void deleteUser(String id);
+	public void deleteUser(Integer id);
 	
-	public boolean userExist(String id);
+	public boolean userExist(String name);
 	
 }
