@@ -8,43 +8,41 @@ public class DefaultRepository {
 
 	protected EntityManager manager = JpaUtils.getEntityManager();
 
-	protected void save(Object object) {
+	public void save(Object object) {
 		try {
 			manager.getTransaction().begin();
 			manager.persist(object);
 			manager.getTransaction().commit();
 		} catch (Exception e) {
 			manager.getTransaction().rollback();
-		} finally {
-			manager.close();
 		}
 
 	}
-	
-	protected void update(Object object) {
+
+	public void update(Object object) {
 		try {
 			manager.getTransaction().begin();
 			manager.merge(object);
 			manager.getTransaction().commit();
 		} catch (Exception e) {
 			manager.getTransaction().rollback();
-		} finally {
-			manager.close();
 		}
 
 	}
-	
-	protected void delete(Object object) {
+
+	public void delete(Object object) {
 		try {
 			manager.getTransaction().begin();
 			manager.remove(object);
 			manager.getTransaction().commit();
 		} catch (Exception e) {
 			manager.getTransaction().rollback();
-		} finally {
-			manager.close();
 		}
 
+	}
+
+	public Object findById(Class<?> objectClass, Integer id) {
+		return manager.find(objectClass, id);
 	}
 
 }
