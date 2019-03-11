@@ -2,14 +2,12 @@ package com.timeclock.service;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
-import com.timeclock.database.JpaUtils;
 import com.timeclock.model.User;
+import com.timeclock.repository.UserRepository;
 
 public class UserServiceImpl implements UserService {
 	
-	EntityManager manager = JpaUtils.getEntityManager();
+	UserRepository userRepository = new UserRepository();
 
 	@Override
 	public void addUser(User user) {
@@ -19,8 +17,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.getAllUsers();
 	}
 
 	@Override
