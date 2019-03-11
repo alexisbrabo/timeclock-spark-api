@@ -1,5 +1,6 @@
 package com.timeclock.main;
 
+import static spark.Spark.after;
 import static spark.Spark.delete;
 import static spark.Spark.get;
 import static spark.Spark.halt;
@@ -21,6 +22,11 @@ public class TimeClock {
 		Persistence.createEntityManagerFactory("TimeClockPU");
 
 		final Gson gson = new Gson();
+
+		// GZIP everything
+		after((request, response) -> {
+			response.header("Content-Encoding", "gzip");
+		});
 
 		get("/users", (req, res) -> {
 			res.type("application/json");
