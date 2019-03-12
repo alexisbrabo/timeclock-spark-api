@@ -27,6 +27,8 @@ public class TimeClock {
 		after((request, response) -> {
 			response.header("Content-Encoding", "gzip");
 		});
+		
+		//***************************************User Routes*****************************************************************************************
 
 		get("/users", (req, res) -> {
 			res.type("application/json");
@@ -59,6 +61,8 @@ public class TimeClock {
 			res.status(204);
 			return "Usuário Deletado";
 		}, gson::toJson);
+		
+		
 	}
 
 }
